@@ -40,6 +40,7 @@ class JunitTest {
 	@Test
 	public void testMancheExisteDansSession() {
 		club.CreerSession();
+		club.getSession().creerManche(2, club);
 		assertNotNull("Aucune manche n'a ete pas cree", club.getSession().getNombreManche());
 	}
 	
@@ -48,6 +49,7 @@ class JunitTest {
 	public void testEquipe1Equipe2ExisteDansSession() {
 		club.CreerSession();
 		club.creerEquipe();
+		club.getSession().formationDesEquipes(club);
 		assertNotNull("Aucune manche n'a ete pas cree", club.getSession().getEquipe1());
 		assertNotNull("Aucune manche n'a ete pas cree", club.getSession().getEquipe2());
 	}

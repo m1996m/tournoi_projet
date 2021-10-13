@@ -1,6 +1,5 @@
 package tournoi;
 
-import java.util.ArrayList;
 import java.util.*;
 
 /**
@@ -58,4 +57,39 @@ public class Session {
 	public void setIsSession(int isSession) {
 		this.isSession = isSession;
 	}
+	
+	//qui permet de mettre � jour le score d'une session ou d'une manche
+	public void creerManche(int nombre,Club club) {
+		List<Manche> l =new ArrayList<Manche>();
+		for(int i=0;i<nombre;i++) {
+			club.getSession().getNombreManche().add(new Manche("manche"+i)); 
+		}
+		
+	}
+	
+	//fonciton qui permet de former les equipes
+	public void formationDesEquipes(Club club) {
+		
+		club.getSession().setEquipe1(club.getEquipe().get(0));
+		club.getSession().setEquipe2(club.getEquipe().get(0));
+		
+	}
+
+	public void DebuterOuArreterManche(Manche manche) {
+		
+	}
+	//fonciton qui permet debuter ou arreter une manche
+	public int isManscheStart(Manche manche) {
+		
+		return 0;
+		
+	}
+	
+	//qui permet de mettre � jour le score d'une session ou d'une manche
+	public void miseAjourScore(Equipe equipe1, Equipe equipe2) {
+		
+		
+		
+	}
+	
 }
