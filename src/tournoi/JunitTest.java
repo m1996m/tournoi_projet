@@ -61,7 +61,12 @@ class JunitTest {
 		club.CreerSession();
 		//remplissage des joueur
 		club.remplissageJoueurJoueur(club.getEquipe().get(0), club.getEquipe().get(1), club,20);
-
+		//Creation des armes
+		for(int i=0;i<club.getEquipe().size();i++) {
+			for(int j=0;j<club.getEquipe().get(i).getJoueur().size();j++) {
+				club.getEquipe().get(i).getJoueur().get(j).creerArme(club, i, j);
+			}
+		}
 		for(int i=0;i<club.getEquipe().size();i++) {
 			for(int j=0;j<club.getEquipe().get(i).getJoueur().size();j++) {
 				assertNotNull("Aucune manche n'a �t� pas cr�e", club.getEquipe().get(i).getJoueur().get(j).getArme());
@@ -74,6 +79,12 @@ class JunitTest {
 		club.creerEquipe();
 		club.CreerSession();
 		club.remplissageJoueurJoueur(club.getEquipe().get(0), club.getEquipe().get(1), club, 20);
+		//Creation des armures
+		for(int i=0;i<club.getEquipe().size();i++) {
+			for(int j=0;j<club.getEquipe().get(i).getJoueur().size();j++) {
+				club.getEquipe().get(i).getJoueur().get(j).creerArmure(club, i, j);
+			}
+		}
 		for(int i=0;i<club.getEquipe().size();i++) {
 			for(int j=0;j<club.getEquipe().get(i).getJoueur().size();j++) {
 				assertNotNull("Aucune manche n'a ete pas cree", club.getEquipe().get(i).getJoueur().get(j).getArmure());			}

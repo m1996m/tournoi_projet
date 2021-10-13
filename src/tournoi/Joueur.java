@@ -44,4 +44,10 @@ public class Joueur extends Personne {
 	public void setArmure(Armure armure) {
 		this.armure = armure;
 	}
+	public void creerArme(Club club,int i,int j) {
+		club.getEquipe().get(i).getJoueur().get(j).setArme(new Arme("arme"));
+	}
+	public void creerArmure(Club club,int i,int j) {
+		club.getEquipe().get(i).getJoueur().get(j).setArmure(new Armure("armure"));
+	}
 }
