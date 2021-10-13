@@ -53,5 +53,31 @@ class JunitTest {
 		assertNotNull("Aucune manche n'a ete pas cree", club.getSession().getEquipe1());
 		assertNotNull("Aucune manche n'a ete pas cree", club.getSession().getEquipe2());
 	}
+	
+	//Un test qui permet de verifier si tout les joueur ont une arme chacun.
+	@Test
+	public void testArmeJoueurExiste() {
+		club.creerEquipe();
+		club.CreerSession();
+		//remplissage des joueur
+		club.remplissageJoueurJoueur(club.getEquipe().get(0), club.getEquipe().get(1), club,20);
+
+		for(int i=0;i<club.getEquipe().size();i++) {
+			for(int j=0;j<club.getEquipe().get(i).getJoueur().size();j++) {
+				assertNotNull("Aucune manche n'a �t� pas cr�e", club.getEquipe().get(i).getJoueur().get(j).getArme());
+			}
+		}
+	}
+	//Un test qui permet de verifier si tout les joueur ont un armure chacun.
+	@Test
+	public void testArmureJoueurExiste() {
+		club.creerEquipe();
+		club.CreerSession();
+		club.remplissageJoueurJoueur(club.getEquipe().get(0), club.getEquipe().get(1), club, 20);
+		for(int i=0;i<club.getEquipe().size();i++) {
+			for(int j=0;j<club.getEquipe().get(i).getJoueur().size();j++) {
+				assertNotNull("Aucune manche n'a ete pas cree", club.getEquipe().get(i).getJoueur().get(j).getArmure());			}
+		}
+	}
 
 }
