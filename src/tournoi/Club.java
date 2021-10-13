@@ -64,27 +64,32 @@ public class Club {
 	}
 	
 	//fonciton qui permet de partager les 20 joueurs entre les deux equipe
-	public void remplissageJoueurJoueur(Equipe equipe1, Equipe equipe2,Club club,int nombreJoueur) {
+	public void remplissageJoueurJoueur(Club club,int nombreJoueur) {
 		List<Joueur> joueur =new ArrayList<Joueur>();
 		joueur=tabJoueur(nombreJoueur);
-		equipe1.setNombreJoueur(0);
-		equipe1.setNombrePoids(0);
-		equipe2.setNombreJoueur(0);
-		equipe2.setNombrePoids(0);
+		int taille=joueur.size()/2;
+		int nombre1=0;
+		double poids1=0;
+		int nombre2=0;
+		double poids2=0;
 		for(int i=0;i<nombreJoueur;i++){
-			if(i<joueur.size()/2) {
-				equipe1.getJoueur().add(joueur.get(0));
-				equipe1.setNombreJoueur(equipe1.getNombreJoueur()+1);
-				equipe1.setNombrePoids(equipe1.getNombrePoids()+1);
+			if(i<taille) {
+				club.getSession().getEquipe1().getJoueur().add(joueur.get(i));
+				nombre1++;
+				poids1=1+club.getSession().getEquipe1().getNombrePoids();
 			}else {
-				equipe2.getJoueur().add(joueur.get(1));
-				equipe2.setNombreJoueur(equipe2.getNombreJoueur()+1);
-				equipe2.setNombrePoids(equipe2.getNombrePoids()+1);
+				club.getSession().getEquipe2().getJoueur().add(joueur.get(i));
+				nombre2++;
+				poids2 =club.getSession().getEquipe2().getNombrePoids()+1;
+				
 				
 			}
 			
 		}
-		
+		club.getSession().getEquipe1().setNombreJoueur(nombre1);
+		club.getSession().getEquipe1().setNombrePoids(poids1);
+		club.getSession().getEquipe2().setNombreJoueur(nombre2);
+		club.getSession().getEquipe2().setNombrePoids(poids2);
 		
 	}
 }

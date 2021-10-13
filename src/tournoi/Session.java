@@ -71,7 +71,7 @@ public class Session {
 	public void formationDesEquipes(Club club) {
 		
 		club.getSession().setEquipe1(club.getEquipe().get(0));
-		club.getSession().setEquipe2(club.getEquipe().get(0));
+		club.getSession().setEquipe2(club.getEquipe().get(1));
 		
 	}
 

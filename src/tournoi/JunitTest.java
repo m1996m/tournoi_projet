@@ -28,10 +28,11 @@ class JunitTest {
 	}
 	
 	//Un test qui permet de verifier s'il ya des joueurs dans l'objet Equipe d'un club.
+
 	@Test
 	public void testJoueurExisteDansEquipe() {
 		club.creerEquipe();
-		club.remplissageJoueurJoueur(club.getEquipe().get(0), club.getEquipe().get(1), club,20);
+		club.remplissageJoueurJoueur(club,20);
 		assertNotNull("Aucun joueur n'a �t� pas enregistr�", club.getEquipe().get(0).getJoueur().get(0));
 		assertNotNull("Aucun joueur n'a �t� pas enregistr�", club.getEquipe().get(1).getJoueur().get(0));
 	}
@@ -60,7 +61,8 @@ class JunitTest {
 		club.creerEquipe();
 		club.CreerSession();
 		//remplissage des joueur
-		club.remplissageJoueurJoueur(club.getEquipe().get(0), club.getEquipe().get(1), club,20);
+		club.getSession().formationDesEquipes(club);
+		club.remplissageJoueurJoueur(club,5);
 		//Creation des armes
 		for(int i=0;i<club.getEquipe().size();i++) {
 			for(int j=0;j<club.getEquipe().get(i).getJoueur().size();j++) {
@@ -78,7 +80,8 @@ class JunitTest {
 	public void testArmureJoueurExiste() {
 		club.creerEquipe();
 		club.CreerSession();
-		club.remplissageJoueurJoueur(club.getEquipe().get(0), club.getEquipe().get(1), club, 20);
+		club.getSession().formationDesEquipes(club);
+		club.remplissageJoueurJoueur(club,7);
 		//Creation des armures
 		for(int i=0;i<club.getEquipe().size();i++) {
 			for(int j=0;j<club.getEquipe().get(i).getJoueur().size();j++) {
@@ -90,5 +93,20 @@ class JunitTest {
 				assertNotNull("Aucune manche n'a ete pas cree", club.getEquipe().get(i).getJoueur().get(j).getArmure());			}
 		}
 	}
-
+	
+	/*Un test qui permet de gerer l'equilibre entre les deux equipe en verifiant que soit
+	 * soit les equipes ont le meme nombre de joueurs
+	 * sinon verifier que le poids  total des joueurs composant les deux equipes se valent.
+	 * sinon on s'interesse à l'anciénété pour les equilibres
+	 * */
+	
+	@Test
+	public void testEquilibrage() {
+		club.creerEquipe();
+		club.CreerSession();
+		club.getSession().formationDesEquipes(club);
+		club.remplissageJoueurJoueur(club, 5);
+		//Verifier que le nombre de joueur composant les deux equipes sont les memes
+		assertEquals(club.getSession().getEquipe1().getNombreJoueur(), club.getSession().getEquipe2().getNombreJoueur());		
+	}
 }
