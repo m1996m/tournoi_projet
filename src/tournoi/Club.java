@@ -36,7 +36,7 @@ public class Club {
 	}
 	
 	//fonction permettant d'ajouter une equipe qui re�oit en parametre une session
-	/*public void creerEquipe() {
+	public void creerEquipe() {
 		
 		Equipe equipe1=new Equipe();
 		Equipe equipe2=new Equipe();
@@ -49,5 +49,5 @@ public class Club {
 	public void CreerSession() {
 		this.setSession(new Session());
 		
-	}*/
+	}
 }
