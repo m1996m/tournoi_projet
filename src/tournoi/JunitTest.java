@@ -1,8 +1,7 @@
 package tournoi;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.Test;
 
 import org.junit.jupiter.api.Test;
 
@@ -26,6 +25,14 @@ class JunitTest {
 		club.creerEquipe();
 		assertNotNull(club.getEquipe());
 		
+	}
+	
+	//Un test qui permet de verifier s'il ya des joueurs dans l'objet Equipe d'un club.
+	@Test
+	public void testJoueurExisteDansEquipe() {
+		club.creerEquipe();
+		assertNotNull("Aucun joueur n'a �t� pas enregistr�", club.getEquipe().get(0).getJoueur().get(0));
+		assertNotNull("Aucun joueur n'a �t� pas enregistr�", club.getEquipe().get(1).getJoueur().get(0));
 	}
 
 }
