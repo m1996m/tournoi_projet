@@ -1,5 +1,6 @@
 package tournoi;
 
+import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,20 +54,20 @@ public class Club {
 	//fonciton qui permet de creer une liste 20 joueur
 	public List<Joueur> tabJoueur(int nombreJoueur){
 		List<Joueur> joueur =new ArrayList<Joueur>();
+		double p=40;
 		for(int i=0;i<nombreJoueur;i++) {
-			int p=40;
-			Joueur J= new Joueur(i,"nom"+i,"prenom"+i,"adresse"+i,p,2021);
-			joueur.add(J);
-			p+=3;
+			joueur.add(new Joueur(i,"nom"+i,"prenom"+i,"adresse"+i,p,YearMonth.now().getYear()));
+			p=p+3;
 			
 		}
 		return joueur;	
 	}
 	
-	//fonciton qui permet de partager les 20 joueurs entre les deux equipe
-	public void remplissageJoueurJoueur(Club club,int nombreJoueur) {
+ 	//fonciton qui permet de partager les 20 joueurs entre les deux equipe
+	public void remplissageJoueurJoueur(Equipe equipe1,Equipe equipe2,int nombreJoueur) {
 		List<Joueur> joueur =new ArrayList<Joueur>();
 		joueur=tabJoueur(nombreJoueur);
+		
 		int taille=joueur.size()/2;
 		int nombre1=0;
 		double poids1=0;
@@ -74,22 +75,19 @@ public class Club {
 		double poids2=0;
 		for(int i=0;i<nombreJoueur;i++){
 			if(i<taille) {
-				club.getSession().getEquipe1().getJoueur().add(joueur.get(i));
+				equipe1.getJoueur().add(joueur.get(i));
 				nombre1++;
-				poids1=1+club.getSession().getEquipe1().getNombrePoids();
+				poids1=poids1+joueur.get(i).getPoids();
 			}else {
-				club.getSession().getEquipe2().getJoueur().add(joueur.get(i));
-				nombre2++;
-				poids2 =club.getSession().getEquipe2().getNombrePoids()+1;
-				
-				
-			}
-			
+	 			equipe2.getJoueur().add(joueur.get(i));
+				nombre2 ++;
+				poids2=poids2+joueur.get(1).getPoids();
+			}	
 		}
-		club.getSession().getEquipe1().setNombreJoueur(nombre1);
-		club.getSession().getEquipe1().setNombrePoids(poids1);
-		club.getSession().getEquipe2().setNombreJoueur(nombre2);
-		club.getSession().getEquipe2().setNombrePoids(poids2);
+		equipe1.setNombreJoueur(nombre1);
+		equipe1.setNombrePoids(poids1);
+		equipe2.setNombreJoueur(nombre2);
+		equipe2.setNombrePoids(poids2);
 		
 	}
-}
+} 

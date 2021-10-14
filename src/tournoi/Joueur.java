@@ -6,7 +6,7 @@ public class Joueur extends Personne {
 	private Arme arme;
 	private Armure armure;
 
-	public Joueur(int id, String nom, String prenom, String adresse,int poids, int anneeParticipation) {
+	public Joueur(int id, String nom, String prenom, String adresse,double poids, int anneeParticipation) {
 		super(id, nom, prenom, adresse);
 		this.poids=poids;
 		this.anneeParticipation=anneeParticipation;

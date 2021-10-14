@@ -32,7 +32,7 @@ class JunitTest {
 	@Test
 	public void testJoueurExisteDansEquipe() {
 		club.creerEquipe();
-		club.remplissageJoueurJoueur(club,20);
+		club.remplissageJoueurJoueur(club.getEquipe().get(0),club.getEquipe().get(1),5);
 		assertNotNull("Aucun joueur n'a �t� pas enregistr�", club.getEquipe().get(0).getJoueur().get(0));
 		assertNotNull("Aucun joueur n'a �t� pas enregistr�", club.getEquipe().get(1).getJoueur().get(0));
 	}
@@ -62,7 +62,7 @@ class JunitTest {
 		club.CreerSession();
 		//remplissage des joueur
 		club.getSession().formationDesEquipes(club);
-		club.remplissageJoueurJoueur(club,5);
+		club.remplissageJoueurJoueur(club.getSession().getEquipe1(),club.getSession().getEquipe2(),4);
 		//Creation des armes
 		for(int i=0;i<club.getEquipe().size();i++) {
 			for(int j=0;j<club.getEquipe().get(i).getJoueur().size();j++) {
@@ -81,7 +81,7 @@ class JunitTest {
 		club.creerEquipe();
 		club.CreerSession();
 		club.getSession().formationDesEquipes(club);
-		club.remplissageJoueurJoueur(club,7);
+		club.remplissageJoueurJoueur(club.getSession().getEquipe1(),club.getSession().getEquipe2(),3);
 		//Creation des armures
 		for(int i=0;i<club.getEquipe().size();i++) {
 			for(int j=0;j<club.getEquipe().get(i).getJoueur().size();j++) {
@@ -105,8 +105,10 @@ class JunitTest {
 		club.creerEquipe();
 		club.CreerSession();
 		club.getSession().formationDesEquipes(club);
-		club.remplissageJoueurJoueur(club, 5);
+		club.remplissageJoueurJoueur(club.getSession().getEquipe1(),club.getSession().getEquipe2(), 5);
 		//Verifier que le nombre de joueur composant les deux equipes sont les memes
-		assertEquals(club.getSession().getEquipe1().getNombreJoueur(), club.getSession().getEquipe2().getNombreJoueur());		
+		//assertEquals(club.getSession().getEquipe1().getNombreJoueur(), club.getSession().getEquipe2().getNombreJoueur());
+		//Verifier que le nombre le poids les deux equipes sont les memes
+		assertEquals(club.getSession().getEquipe1().getNombrePoids(), club.getSession().getEquipe2().getNombrePoids());	
 	}
 }
