@@ -51,22 +51,29 @@ public class Club {
 		this.setSession(new Session());
 		
 	}
-	//fonciton qui permet de creer une liste 20 joueur
-	public List<Joueur> tabJoueur(int nombreJoueur){
+	//fonciton qui permet de creer une liste de joueur
+	public List<Joueur> tabJoueur(int nombreJoueur,int ancienete){
 		List<Joueur> joueur =new ArrayList<Joueur>();
 		double p=40;
+		int annee=YearMonth.now().getYear();
 		for(int i=0;i<nombreJoueur;i++) {
-			joueur.add(new Joueur(i,"nom"+i,"prenom"+i,"adresse"+i,p,YearMonth.now().getYear()));
+			if(ancienete==1) {
+				joueur.add(new Joueur(i,"nom"+i,"prenom"+i,"adresse"+i,p,annee));
+				annee-=2;
+			}else {
+				joueur.add(new Joueur(i,"nom"+i,"prenom"+i,"adresse"+i,p,annee));
+			}
 			p=p+3;
 			
 		}
 		return joueur;	
 	}
 	
+	
  	//fonciton qui permet de partager les 20 joueurs entre les deux equipe
 	public void remplissageJoueurJoueur(Equipe equipe1,Equipe equipe2,int nombreJoueur) {
 		List<Joueur> joueur =new ArrayList<Joueur>();
-		joueur=tabJoueur(nombreJoueur);
+		joueur=tabJoueur(nombreJoueur,0);
 		
 		int taille=joueur.size()/2;
 		int nombre1=0;
@@ -88,6 +95,22 @@ public class Club {
 		equipe1.setNombrePoids(poids1);
 		equipe2.setNombreJoueur(nombre2);
 		equipe2.setNombrePoids(poids2);
+		
+	}
+	
+	// Fonction permettant de recuperer le nombre d'annee d'anciennete total de chaque equipe
+	public int testAciennete(Equipe equipe,int nombreJoueur,List<Joueur> joueur ) {
+		joueur=tabJoueur(nombreJoueur,1);
+		int p=0;
+		 // Test permettant de recupperer le nombre d'ancienete total de l'equipe1
+		for(int i=0;i<nombreJoueur;i++) {
+			for(int j=0;j<equipe.getJoueur().size();j++) {
+				if(joueur.get(i).equals(equipe.getJoueur().get(j))) {
+					p+=YearMonth.now().getYear()-joueur.get(i).getAnneeParticipation();
+				}
+			}
+		}
+		return p;
 		
 	}
 } 
