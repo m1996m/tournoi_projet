@@ -3,6 +3,7 @@ package tournoi;
 import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * @author DELL
@@ -164,5 +165,41 @@ public class Club {
 			equipe2.getJoueur().remove(indice.get(i));
 		}
 
+	}
+	
+	public int isSessionEncours(Session session) {
+		return session.getIsSession();
+	}
+	//Fonction permettant de demarrer ou d'arreter une session
+	public void startOrEndSession(Session session) {
+		if(this.isSessionEncours(session)==1) {
+			session.setIsSession(2);
+		}else if(this.isSessionEncours(session)==0) {
+			session.setIsSession(1);
+		}else {
+			System.out.println("Cette cession est dejà terminée");
+		}
+		
+	}
+	 //Fonction permettant à l'utlisateur de saisir des joueurs
+	public List<Joueur> addPlayer(List<Joueur> joueur) {
+		Scanner sc =new Scanner(System.in);
+		System.out.println("Saisir le nombre de joueur que vous voulez saisir");
+		int nombre =sc.nextInt();
+		
+		for(int i=0;i<nombre;i++) {
+			System.out.println("Saisir le nom du joueur numero: "+i);
+			String nom=sc.nextLine();
+			System.out.println("Saisir le prenom du joueur numero: "+i);
+			String prenom=sc.nextLine();
+			System.out.println("Saisir l'adresse du joueur numero: "+i);
+			String adresse=sc.nextLine();
+			System.out.println("Saisir le poids du joueur numero: "+i);
+			double poids=sc.nextDouble();
+			joueur.add(new Joueur(i,nom, prenom, adresse, poids, YearMonth.now().getYear()));
+		}
+		
+		return joueur;
+		
 	}
 } 

@@ -49,4 +49,5 @@ public class Equipe {
 	public void setNombrePoint(int nombrePoint) {
 		this.nombrePoint = nombrePoint;
 	}
+	
 }
