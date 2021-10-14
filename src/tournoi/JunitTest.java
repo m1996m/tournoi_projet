@@ -116,7 +116,7 @@ class JunitTest {
 		club.CreerSession();
 		//appel a la fonction permettant de creer la formation des equipes d'un club
 		club.getSession().formationDesEquipes(club);
-		club.remplissageJoueurJoueur(club.getSession().getEquipe1(),club.getSession().getEquipe2(), 7);
+		club.remplissageJoueurJoueur(club.getSession().getEquipe1(),club.getSession().getEquipe2(), 6);
 		//Verifier que le nombre de joueur composant les deux equipes sont les memes
 		//assertEquals(club.getSession().getEquipe1().getNombreJoueur(), club.getSession().getEquipe2().getNombreJoueur());
 		
@@ -125,8 +125,7 @@ class JunitTest {
 		
 		
 		//Verifier que le nombre d'anciennete des deux equipes sont les memes
-		System.out.println("annee1: "+club.testAciennete(club.getSession().getEquipe1(), 7, joueur));
-		System.out.println("annee2: "+club.testAciennete(club.getSession().getEquipe2(), 7, joueur));
-		assertEquals(club.testAciennete(club.getSession().getEquipe1(), 7, joueur), club.testAciennete(club.getSession().getEquipe2(), 7, joueur));	
+		club.testEquilibrage(club.getSession().getEquipe1(), club.getSession().getEquipe2(), 6, joueur);
+		assertEquals(club.testAciennete(club.getSession().getEquipe1(), 6, joueur), club.testAciennete(club.getSession().getEquipe2(), 6, joueur));	
 	}
 }

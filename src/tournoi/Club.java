@@ -113,4 +113,56 @@ public class Club {
 		return p;
 		
 	}
+	
+	// Fonction permettant de recuperer le nombre d'annee d'anciennete total de chaque equipe
+	@SuppressWarnings("unlikely-arg-type")
+	public void testEquilibrage(Equipe equipe1,Equipe equipe2,int nombreJoueur,List<Joueur> joueur ) {
+		int total=this.testAciennete(equipe1, nombreJoueur, joueur)+this.testAciennete(equipe2, nombreJoueur, joueur);
+		int p=0;
+		int j;
+		int valeur=this.testAciennete(equipe1,nombreJoueur,joueur);
+		List<Integer> indice = new ArrayList<Integer>();
+		List<Joueur> l =new ArrayList<Joueur>();
+		 //Test permettant de recupperer le nombre d'ancienete total de l'equipe1
+		for(int i=0;i<equipe2.getJoueur().size();i++) {
+			j=i+1;
+			l.clear();
+			p=YearMonth.now().getYear()-equipe2.getJoueur().get(i).getAnneeParticipation();
+			if(Math.floorMod(total/2,2)==0) {
+				while(p!=total/2 && j<equipe2.getJoueur().size()){
+					l.add(equipe2.getJoueur().get(j));
+					indice.add(j);
+					p+=YearMonth.now().getYear()-equipe2.getJoueur().get(j).getAnneeParticipation();
+					if(p>total/2) {
+						p=equipe2.getJoueur().get(i).getAnneeParticipation();
+						l.clear();
+						indice.clear();
+					}
+					j++;
+				}
+			}else {
+				while(((p+valeur!=total/2-1) || p+valeur!=total/2+2) && j<equipe2.getJoueur().size()){
+					l.add(equipe2.getJoueur().get(j));
+					indice.add(j);
+					p+=YearMonth.now().getYear()-equipe2.getJoueur().get(j).getAnneeParticipation();
+					if(p>total/2){
+						p=equipe2.getJoueur().get(i).getAnneeParticipation();
+						l.clear();
+						indice.clear();
+					}
+					j++;
+				}
+			}
+			if(p+valeur==total/2 || p+valeur!=total/2-1 || p+valeur!=total/2+2) {
+				i=nombreJoueur;
+			}
+		}
+		for(int i=0;i<l.size();i++) {
+			equipe1.getJoueur().add(l.get(i));
+		}
+		for(int i=0;i<indice.size();i++) {
+			equipe2.getJoueur().remove(indice.get(i));
+		}
+
+	}
 } 
