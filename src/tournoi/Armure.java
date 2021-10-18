@@ -20,4 +20,9 @@ public class Armure {
 		this.nom = nom;
 	}
 
+	@Override
+	public String toString() {
+		return "Armure [nom=" + nom + "]";
+	}
+
 }

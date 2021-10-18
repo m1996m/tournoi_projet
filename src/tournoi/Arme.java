@@ -19,6 +19,11 @@ public class Arme {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+
+	@Override
+	public String toString() {
+		return "Arme [nom=" + nom + "]";
+	}
 	
 
 

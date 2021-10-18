@@ -44,6 +44,12 @@ public class Joueur extends Personne {
 	public void setArmure(Armure armure) {
 		this.armure = armure;
 	}
+	@Override
+	public String toString() {
+		return "Joueur [poids=" + poids + ", anneeParticipation=" + anneeParticipation + ", arme=" + arme + ", armure="
+				+ armure + "]";
+	}
+
 	public void creerArme(Club club,int i,int j) {
 		club.getEquipe().get(i).getJoueur().get(j).setArme(new Arme("arme"));
 	}

@@ -13,8 +13,10 @@ import java.util.Scanner;
 public class Club {
 	private List<Equipe> equipe=new ArrayList<Equipe>();
 	private Session session;
+	private int isEquipe=0;
+	private int isSession=0;
 	/**
-	 * Constructeur � deux arguments(une liste dequipe et une liste de combat)
+	 * Constructeur deux arguments(une liste dequipe et une liste de combat)
 	 */
 	public Club() {
 		//this.equipe = null;
@@ -37,29 +39,52 @@ public class Club {
 		this.session = session;
 	}
 	
+	public int getIsEquipe() {
+		return isEquipe;
+	}
+
+	public void setIsEquipe(int isEquipe) {
+		this.isEquipe = isEquipe;
+	}
+
+	public int getIsSession() {
+		return isSession;
+	}
+
+	public void setIsSession(int isSession) {
+		this.isSession = isSession;
+	}
+
 	//fonction permettant d'ajouter une equipe qui re�oit en parametre une session
-	public void creerEquipe() {
+	public void creerEquipe(Club club) {
 		
 		Equipe equipe1=new Equipe();
 		Equipe equipe2=new Equipe();
 		List<Equipe> l=new ArrayList<Equipe>();
 		l.add(equipe1);
 		l.add(equipe2);
-		this.setEquipe(l);	
+		club.setEquipe(l);	
+		this.isEquipe=1;
 	}
 	//fonciton qu i permet de creer une session qui re �oit en parametre une session 
 	public void CreerSession() {
 		this.setSession(new Session());
+		this.isSession=1;
 		
 	}
 	//fonciton qui permet de creer une liste de joueur
-	public List<Joueur> tabJoueur(int nombreJoueur,int ancienete){
-		List<Joueur> joueur =new ArrayList<Joueur>();
+	public List<Joueur> tabJoueur(int nombreJoueur,int ancienete,List<Joueur> joueur){
+		List<Joueur> l =new ArrayList<Joueur>();
 		double p=40;
 		int annee=YearMonth.now().getYear();
 		for(int i=0;i<nombreJoueur;i++) {
 			if(ancienete==1) {
-				joueur.add(new Joueur(i,"nom"+i,"prenom"+i,"adresse"+i,p,annee));
+				if(!joueur.isEmpty()) {
+					joueur.add(new Joueur(i,"nom"+i,"prenom"+i,"adresse"+i,p,annee));
+				}else {
+					l.addAll(joueur);
+					joueur.clear();
+				}
 				annee-=2;
 			}else {
 				joueur.add(new Joueur(i,"nom"+i,"prenom"+i,"adresse"+i,p,annee));
@@ -72,16 +97,18 @@ public class Club {
 	
 	
  	//fonciton qui permet de partager les 20 joueurs entre les deux equipe
-	public void remplissageJoueurJoueur(Equipe equipe1,Equipe equipe2,int nombreJoueur) {
-		List<Joueur> joueur =new ArrayList<Joueur>();
-		joueur=tabJoueur(nombreJoueur,0);
+	public void remplissageJoueurJoueur(Equipe equipe1,Equipe equipe2,int nombreJoueur,List<Joueur> joueur) {
+		List<Joueur> j =new ArrayList<Joueur>();
+		if(joueur.isEmpty()) {
+			joueur=tabJoueur(nombreJoueur,0,j);
+		}
 		
 		int taille=joueur.size()/2;
 		int nombre1=0;
 		double poids1=0;
 		int nombre2=0;
 		double poids2=0;
-		for(int i=0;i<nombreJoueur;i++){
+		for(int i=0;i<joueur.size();i++){
 			if(i<taille) {
 				equipe1.getJoueur().add(joueur.get(i));
 				nombre1++;
@@ -101,7 +128,8 @@ public class Club {
 	
 	// Fonction permettant de recuperer le nombre d'annee d'anciennete total de chaque equipe
 	public int testAciennete(Equipe equipe,int nombreJoueur,List<Joueur> joueur ) {
-		joueur=tabJoueur(nombreJoueur,1);
+		List<Joueur> l=new ArrayList<Joueur>();
+		joueur=tabJoueur(nombreJoueur,1,l);
 		int p=0;
 		 // Test permettant de recupperer le nombre d'ancienete total de l'equipe1
 		for(int i=0;i<nombreJoueur;i++) {
@@ -129,8 +157,8 @@ public class Club {
 			j=i+1;
 			l.clear();
 			p=YearMonth.now().getYear()-equipe2.getJoueur().get(i).getAnneeParticipation();
-			if(Math.floorMod(total/2,2)==0) {
-				while(p!=total/2 && j<equipe2.getJoueur().size()){
+			if(Math.floorMod(total/2,2)==0){
+				while((p+valeur!=total/2 || p+valeur!=total/2+2) && j<equipe2.getJoueur().size()){
 					l.add(equipe2.getJoueur().get(j));
 					indice.add(j);
 					p+=YearMonth.now().getYear()-equipe2.getJoueur().get(j).getAnneeParticipation();
@@ -202,4 +230,32 @@ public class Club {
 		return joueur;
 		
 	}
-} 
+	
+	public int equipeExiste(Club club) {
+		int nombre=0;
+		if(club.getIsEquipe()!=0) {
+			nombre=1;
+		}
+		return nombre;
+ 	}
+	
+	public int sessionExiste(Club club) {
+		int nombre=0;
+		if(club.getIsSession()!=0) {
+			nombre=1;
+		}
+		return nombre;
+ 	}
+	public void creerArme(List<Joueur> joueur) {
+		
+		for(int i=0;i<joueur.size();i++) {
+			joueur.get(i).setArme(new Arme("arme"));
+		}
+	}
+	public void creerArmure(List<Joueur> joueur) {
+		for(int i=0;i<joueur.size();i++) {
+			joueur.get(i).setArmure(new Armure("armure"));
+		}
+		
+	}
+}

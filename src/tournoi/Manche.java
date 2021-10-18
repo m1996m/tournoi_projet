@@ -19,5 +19,9 @@ public class Manche {
 	public void setIsManche(int isManche) {
 		this.isManche = isManche;
 	}
+	@Override
+	public String toString() {
+		return "Manche [nom=" + nom + ", isManche=" + isManche + "]";
+	}
 
 }

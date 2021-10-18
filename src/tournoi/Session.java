@@ -98,12 +98,6 @@ public class Session {
 			System.out.println("Toutes les manches sont terminées");
 		}
 	}
-	//fonciton qui permet debuter ou arreter une manche
-	public int isManscheStart(Manche manche) {
-		
-		return 0;
-		
-	}
 	
 	//qui permet de mettre � jour le score d'une session ou d'une manche
 	public void miseAjourScore(Equipe equipe1, Equipe equipe2) {
@@ -116,5 +110,28 @@ public class Session {
 		equipe2.setNombrePoids(score);
 		
 	}
+	//qui permet de passer à une nouvelle manche
+	public void mancheSuivant(Club club) {
+		int i=0;
+		int trouve=0;
+		while(i<club.getSession().getNombreManche().size() && trouve==0) {
+			if(club.getSession().getNombreManche().get(i).getIsManche()!=1 &&club.getSession().getNombreManche().get(i).getIsManche()!=2)
+			{
+				trouve=1;
+			}else {
+				i++;
+			}
+		}
+		if(trouve==1) {
+			club.getSession().getNombreManche().get(i).setIsManche(1);
+			club.getSession().getNombreManche().get(i-1).setIsManche(2);
+		}
+	}
+
+	@Override
+	public String toString() {
+		return "Session [equipe1=" + equipe1 + ", equipe2=" + equipe2 + "]";
+	}
+		
 	
-}
+}  

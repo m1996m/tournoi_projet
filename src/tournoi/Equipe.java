@@ -49,5 +49,10 @@ public class Equipe {
 	public void setNombrePoint(int nombrePoint) {
 		this.nombrePoint = nombrePoint;
 	}
+	@Override
+	public String toString() {
+		return "Equipe [joueur=" + joueur + ", nombreJoueur=" + nombreJoueur + ", nombrePoids=" + nombrePoids
+				+ ", nombrePoint=" + nombrePoint + "]";
+	}
 	
 }
