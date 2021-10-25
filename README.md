@@ -31,8 +31,7 @@ Choix entrainement :
 * Liste joueur (visualiser les joueurs en leur equipe sur deux lignes different)
 * Retour (retourner fenetre arriere)
 
-
-  2) Ensuite en crée la session : 
+ 2) Ensuite en crée la session : 
  * créer une session (on crée une session vide)
  * Ajouter des equipes a la session (On ajoute les deux equipes dans la session)
  * Creer des manches (On crée les manches en choisisant le nombre de round)
