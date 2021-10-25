@@ -6,7 +6,7 @@
 
 ### Description
 
-__Back-end de la brique Portail.__
+__JAVA APPLICATION__
 
 L'objectif du projet béhourd est de mettre à disposition une application pour organisé des combats amicaux:
  * Utulisation des test de haut niveau avec Junit (TDD)
