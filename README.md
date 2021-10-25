@@ -1,48 +1,37 @@
 ### tournoi béhourd (en java)
-
-### Groupe : BACHA HASSAN Omar && Guillaume Onfray && Mamadou Malick Diallo
-
-
+Groupe : BACHA HASSAN Omar && Guillaume Onfray && Mamadou Malick Diallo
 
 ### Description
+* L'objectif du projet béhourd est de mettre à disposition une application pour organisé des combats amicaux:
 
-__JAVA APPLICATION__
+* Utilisation des test de haut niveau avec Junit (TDD)
 
-L'objectif du projet béhourd est de mettre à disposition une application pour organisé des combats amicaux:
- * Utulisation des test de haut niveau avec Junit (TDD)
- 
- 
- 
+### JAVA APPLICATION
+
+
 ### Démarrage
-* Récuperer les sources : git clone https://github.com/m1996m/tournoi_projet
+* Récupérer les sources : git clone https://github.com/m1996m/tournoi_projet
 
 * Compilation, Build et Run : Eclipse
- 
 
-### Test :  Etape à suivre pour le bon fonctionnement de l'application : 
+### Test : Etape à suivre pour le bon fonctionnement de l'application :
+* Choix entrainement :
 
-
-Choix entrainement : 
-  1) D'abords en crée les equipes : 
-* créer les equipes
-* creer les joueurs (On choisis le nombre de joueur total (somme des jouers dans les deux equipes) 
-   //Ensuite notre algorithme va dispercer ces joueurs dans les deux equipe de maniere aleatoire en respectant les regles du jeux.)
-* Liste equipe (visualiser l'ensemble des joueurs se trouvant dans le club : equipe 1 + equipe 2)
-* Liste joueur (visualiser les joueurs en leur equipe sur deux lignes different)
-* Retour (retourner fenetre arriere)
-
- 2) Ensuite en crée la session : 
- * créer une session (on crée une session vide)
- * Ajouter des equipes a la session (On ajoute les deux equipes dans la session)
- * Creer des manches (On crée les manches en choisisant le nombre de round)
- * Lancer la session (On lance la session creer)
- * Liste joueur par equipe (On peut visualiser la liste des joueurs des deux equipes)
- * Manche suivant (pour passé au round suivant manuellement)
- * Liste manche (le nombre de manche choisis)
- * Retour
-    
-  3) Enfin on peut ajouter des scores et ajouter des joueurs en cours de parties : 
- * Ajouter le score (Va nous permettre d'ajouter les scores manuellement)
- * Ajouter des joueurs (On pourra ajouter des joueurs en cours de session ou partie)
-    
-
+1) D'abord on crée les équipes :
+* créer les équipes
+* créer les joueurs (On choisit le nombre de joueur total (somme des joueurs dans les deux équipes) //Ensuite notre algorithme va disperser ces joueurs dans les deux équipe de * manière aléatoire en respectant les règles du jeux.)
+* Liste équipe (visualiser l'ensemble des joueurs se trouvant dans le club : équipe 1 + équipe 2)
+* Liste joueur (visualiser les joueurs en leur équipe sur deux lignes différentes)
+*Retour (retourner fenêtre arrière)
+2) Ensuite on crée la session :
+* créer une session (on crée une session vide)
+* Ajouter des équipes à la session (On ajoute les deux équipes dans la session)
+* Créer des manches (On crée les manches en choisissant le nombre de round)
+* Lancer la session (On lance la session créée)
+* Liste joueur par équipe (On peut visualiser la liste des joueurs des deux équipes)
+* Manche suivante (pour passer au round suivant manuellement)
+* Liste manche (le nombre de manche choisies)
+* Retour
+3) Enfin on peut ajouter des scores et ajouter des joueurs en cours de partie :
+* Ajouter le score (Va nous permettre d'ajouter les scores manuellement)
+* Ajouter des joueurs (On pourra ajouter des joueurs en cours de session ou partie)
